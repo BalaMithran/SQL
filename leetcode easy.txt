@@ -1,0 +1,32 @@
+175. Combine Two Tables
+ 
+select firstname ,lastname, city ,state 
+from
+Person left join Address 
+on Person.personId = Address.personId
+
+
+
+181. Employees Earning More Than Their Managers
+
+select name as Employee from Employee as e
+where managerId is not null 
+    and
+    salary >  (SELECT salary FROM Employee WHERE id = e.managerId)
+
+
+
+
+
+182. Duplicate Emails
+
+select Email from Person 
+group by Email
+having count(email)>1 
+
+
+
+
+183. Customers Who Never Order
+
+select customers.name as 'Customers' from Customers where Customers.id not in (select CustomerId from orders);
